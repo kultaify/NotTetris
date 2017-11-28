@@ -13,15 +13,25 @@ public class PlayerMovement : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Move () {
+	void FixedUpdate () {
 
-        float move = Input.GetAxis("Horizontal");
-        rig.AddForce(new Vector2(move, 0), ForceMode2D.Force);
-	}
+        //float move = Input.GetAxis("Horizontal");
+        //rig.AddForce(new Vector2(move, 0), ForceMode2D.Force);
+
+        float moveHorizontal = Input.GetAxis("Horizontal");
+
+        Vector2 movement = new Vector2(moveHorizontal, 0);
+
+        rig.AddForce(movement * speed);
+    }
 
     void Jump ()
     {
+
+
+        rig.AddForce(Vector2.up, ForceMode2D.Impulse);
     }
+
     void Rotate ()
     {
 
