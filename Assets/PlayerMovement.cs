@@ -27,9 +27,13 @@ public class PlayerMovement : MonoBehaviour {
 
     void Jump ()
     {
+        float moveVertical = Input.GetAxis("Jump");
 
+        Vector2 jump = new Vector2(0, moveVertical);
 
-        rig.AddForce(Vector2.up, ForceMode2D.Impulse);
+        rig.AddForce(jump * speed);
+
+        //rig.AddForce(Vector2.up, ForceMode2D.Impulse);
     }
 
     void Rotate ()
